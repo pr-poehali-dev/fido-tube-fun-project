@@ -67,6 +67,42 @@ const getAudioCtx = (() => {
   };
 })();
 
+function playEvilLaugh() {
+  const ctx = getAudioCtx();
+  const now = ctx.currentTime;
+  // ХА-ХА-ХА — три нисходящих зловещих слога
+  const notes = [
+    { freq: 180, t: 0 },
+    { freq: 160, t: 0.22 },
+    { freq: 140, t: 0.44 },
+    { freq: 120, t: 0.66 },
+    { freq: 100, t: 0.88 },
+  ];
+  notes.forEach(({ freq, t }) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    // добавляем дрожание для зловещести
+    const vibrato = ctx.createOscillator();
+    const vibratoGain = ctx.createGain();
+    vibrato.frequency.value = 7;
+    vibratoGain.gain.value = 8;
+    vibrato.connect(vibratoGain);
+    vibratoGain.connect(osc.frequency);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = "sawtooth";
+    osc.frequency.setValueAtTime(freq, now + t);
+    osc.frequency.exponentialRampToValueAtTime(freq * 0.7, now + t + 0.18);
+    gain.gain.setValueAtTime(0, now + t);
+    gain.gain.linearRampToValueAtTime(0.35, now + t + 0.03);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + t + 0.2);
+    vibrato.start(now + t);
+    vibrato.stop(now + t + 0.22);
+    osc.start(now + t);
+    osc.stop(now + t + 0.22);
+  });
+}
+
 function playSound(type: "boing" | "pop" | "subscribe" | "like" | "tab" | "search" | "error") {
   const ctx = getAudioCtx();
   const now = ctx.currentTime;
@@ -194,11 +230,13 @@ export default function Index() {
         <div className="flex items-center gap-3 px-4 py-3 max-w-screen-2xl mx-auto">
 
           {/* LOGO */}
-          <div className="flex items-center select-none cursor-pointer flex-shrink-0" onClick={() => setActiveTab("Главная")}>
+          <div className="flex items-center select-none cursor-pointer flex-shrink-0"
+            onClick={() => { setActiveTab("Главная"); playEvilLaugh(); }}
+            onMouseEnter={() => playEvilLaugh()}>
             <img
               src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/dafd1d89-eca8-4c2e-a810-f7545e8d6f8c.png"
               alt="FidoTube"
-              className="h-20 w-auto object-contain hover:scale-105 transition-all"
+              className="h-20 w-auto object-contain hover:scale-110 hover:rotate-3 transition-all duration-200"
             />
           </div>
 
