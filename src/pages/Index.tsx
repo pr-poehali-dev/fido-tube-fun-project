@@ -58,6 +58,87 @@ const TRENDING = [
   { pos: 5, title: "ЧТО ЕСЛИ СЪЕСТЬ 100 КОНФЕТ ПОДРЯД", channel: "СладкийЧеловек", views: "38M", color: "#1DDC8B" },
 ];
 
+// ======= WEB AUDIO SOUNDS =======
+const getAudioCtx = (() => {
+  let ctx: AudioContext | null = null;
+  return () => {
+    if (!ctx) ctx = new (window.AudioContext || (window as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext!)();
+    return ctx;
+  };
+})();
+
+function playSound(type: "boing" | "pop" | "subscribe" | "like" | "tab" | "search" | "error") {
+  const ctx = getAudioCtx();
+  const now = ctx.currentTime;
+
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+
+  if (type === "boing") {
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(180, now);
+    osc.frequency.exponentialRampToValueAtTime(520, now + 0.15);
+    osc.frequency.exponentialRampToValueAtTime(180, now + 0.35);
+    gain.gain.setValueAtTime(0.4, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+    osc.start(now); osc.stop(now + 0.4);
+  } else if (type === "pop") {
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(600, now);
+    osc.frequency.exponentialRampToValueAtTime(200, now + 0.12);
+    gain.gain.setValueAtTime(0.5, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.15);
+    osc.start(now); osc.stop(now + 0.15);
+  } else if (type === "subscribe") {
+    // Восходящая мелодия до-ми-соль
+    [261, 329, 392].forEach((freq, i) => {
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.connect(g); g.connect(ctx.destination);
+      o.type = "triangle";
+      o.frequency.value = freq;
+      const t = now + i * 0.1;
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(0.4, t + 0.04);
+      g.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
+      o.start(t); o.stop(t + 0.25);
+    });
+    return;
+  } else if (type === "like") {
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(440, now);
+    osc.frequency.exponentialRampToValueAtTime(880, now + 0.08);
+    gain.gain.setValueAtTime(0.3, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+    osc.start(now); osc.stop(now + 0.2);
+  } else if (type === "tab") {
+    osc.type = "square";
+    osc.frequency.setValueAtTime(300, now);
+    osc.frequency.linearRampToValueAtTime(400, now + 0.06);
+    gain.gain.setValueAtTime(0.15, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+    osc.start(now); osc.stop(now + 0.1);
+  } else if (type === "search") {
+    // Нарастающий свист
+    osc.type = "sine";
+    osc.frequency.setValueAtTime(400, now);
+    osc.frequency.exponentialRampToValueAtTime(1200, now + 0.2);
+    gain.gain.setValueAtTime(0.3, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+    osc.start(now); osc.stop(now + 0.25);
+  } else if (type === "error") {
+    // Смешной провальный звук
+    osc.type = "sawtooth";
+    osc.frequency.setValueAtTime(400, now);
+    osc.frequency.exponentialRampToValueAtTime(80, now + 0.35);
+    gain.gain.setValueAtTime(0.25, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+    osc.start(now); osc.stop(now + 0.4);
+  }
+}
+
 export default function Index() {
   const [activeTab, setActiveTab] = useState("Главная");
   const [likedVideos, setLikedVideos] = useState<number[]>([]);
@@ -74,12 +155,14 @@ export default function Index() {
   const TABS = ["Главная", "Шортсы", "Тренды", "Подписки", "Каналы", "ВИГИ"];
 
   const toggleLike = (id: number) => {
+    playSound(likedVideos.includes(id) ? "pop" : "like");
     setLikedVideos(prev =>
       prev.includes(id) ? prev.filter(v => v !== id) : [...prev, id]
     );
   };
 
-  const showNotif = (text: string) => {
+  const showNotif = (text: string, sound: "boing" | "pop" | "error" | "search" = "boing") => {
+    playSound(sound);
     setNotifText(text);
     setNotifShown(true);
     setTimeout(() => setNotifShown(false), 2200);
@@ -90,7 +173,7 @@ export default function Index() {
     setSubscribedChannels(prev =>
       isSubbed ? prev.filter(c => c !== name) : [...prev, name]
     );
-    showNotif(isSubbed ? `🔕 Отписка от ${name}. Зря.` : `🔔 ПОДПИСКА НА ${name} ОФОРМЛЕНА!`);
+    showNotif(isSubbed ? `🔕 Отписка от ${name}. Зря.` : `🔔 ПОДПИСКА НА ${name} ОФОРМЛЕНА!`, isSubbed ? "error" : "subscribe");
   };
 
   return (
@@ -138,7 +221,7 @@ export default function Index() {
               <button
                 className="px-4 py-2.5 font-black text-sm transition-all hover:scale-110"
                 style={{ background: "var(--fido-yellow)", borderLeft: "3px solid var(--fido-dark)", color: "var(--fido-dark)" }}
-                onClick={() => showNotif(`🔍 Ищем «${searchQuery || "ничего"}»... ничего не нашли. Попробуй ещё.`)}
+                onClick={() => showNotif(`🔍 Ищем «${searchQuery || "ничего"}»... ничего не нашли. Попробуй ещё.`, "search")}
               >
                 ИДИ!
               </button>
@@ -177,7 +260,7 @@ export default function Index() {
           {TABS.map(tab => (
             <button
               key={tab}
-              onClick={() => setActiveTab(tab)}
+              onClick={() => { playSound("tab"); setActiveTab(tab); }}
               className="px-4 py-2 rounded-xl font-black text-sm whitespace-nowrap transition-all"
               style={{
                 background: activeTab === tab ? "var(--fido-orange)" : "rgba(0,0,0,0.07)",
@@ -362,7 +445,7 @@ export default function Index() {
                 <div
                   key={video.id}
                   className={`cartoon-border rounded-2xl overflow-hidden cursor-pointer transition-all hover:scale-[1.02] hover:-rotate-1 animate-slide-up stagger-${Math.min(i + 1, 6)} bg-white`}
-                  onClick={() => setSelectedVideo(video)}
+                  onClick={() => { playSound("boing"); setSelectedVideo(video); }}
                 >
                   <div className="relative">
                     <img src={video.img} alt={video.title} className="w-full h-44 object-cover" />
@@ -910,6 +993,7 @@ export default function Index() {
                       onChange={e => setCommentText(e.target.value)}
                       onKeyDown={e => {
                         if (e.key === "Enter" && commentText.trim()) {
+                          playSound("pop");
                           setSubmittedComment(commentText);
                           setCommentText("");
                         }
@@ -919,7 +1003,7 @@ export default function Index() {
                       style={{ background: "#fff8e8" }}
                     />
                     <button
-                      onClick={() => { if (commentText.trim()) { setSubmittedComment(commentText); setCommentText(""); } }}
+                      onClick={() => { if (commentText.trim()) { playSound("pop"); setSubmittedComment(commentText); setCommentText(""); } }}
                       className="px-3 py-2 rounded-xl cartoon-border-sm font-black text-sm hover:scale-105 transition-all"
                       style={{ background: "var(--fido-green)", color: "white" }}
                     >
