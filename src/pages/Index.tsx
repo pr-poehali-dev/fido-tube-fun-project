@@ -685,10 +685,9 @@ export default function Index() {
               <div className="p-5 flex flex-col sm:flex-row gap-5 items-start" style={{ background: "#0f0f0f" }}>
                 <div className="w-24 h-24 rounded-full overflow-hidden cartoon-border-thick flex-shrink-0 -mt-12">
                   <img
-                    src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/eba72679-9852-441c-928d-ec87de61bd4d.jpg"
+                    src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/e18677b3-ea84-4abd-ac67-3c555674f419.jpg"
                     alt="ВИГИ"
-                    className="w-full h-full object-cover object-top"
-                    style={{ background: "#c4b5fd" }}
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="flex-1">
