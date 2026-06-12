@@ -107,7 +107,7 @@ export default function Index() {
       )}
 
       {/* ===== HEADER ===== */}
-      <header className="sticky top-0 z-40" style={{ background: "var(--fido-orange)", borderBottom: "4px solid var(--fido-dark)" }}>
+      <header className="sticky top-0 z-40" style={{ background: "white", borderBottom: "4px solid var(--fido-dark)" }}>
         <div className="flex items-center gap-3 px-4 py-3 max-w-screen-2xl mx-auto">
 
           {/* LOGO */}
@@ -180,8 +180,8 @@ export default function Index() {
               onClick={() => setActiveTab(tab)}
               className="px-4 py-2 rounded-xl font-black text-sm whitespace-nowrap transition-all"
               style={{
-                background: activeTab === tab ? "var(--fido-yellow)" : "rgba(255,255,255,0.2)",
-                color: activeTab === tab ? "var(--fido-dark)" : "white",
+                background: activeTab === tab ? "var(--fido-orange)" : "rgba(0,0,0,0.07)",
+                color: activeTab === tab ? "white" : "var(--fido-dark)",
                 border: activeTab === tab ? "3px solid var(--fido-dark)" : "3px solid transparent",
                 boxShadow: activeTab === tab ? "3px 3px 0 var(--fido-dark)" : "none",
                 transform: activeTab === tab ? "scale(1.05)" : "scale(1)",
