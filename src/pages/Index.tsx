@@ -343,7 +343,7 @@ export default function Index() {
                     <div className="w-44 h-56 rounded-3xl overflow-hidden cartoon-border-thick rotate-2"
                       style={{ background: "white" }}>
                       <img
-                        src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/eba72679-9852-441c-928d-ec87de61bd4d.jpg"
+                        src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/bee4a406-483d-4813-a124-60421c2eeb6e.jpg"
                         alt="Илья Виги"
                         className="w-full h-full object-cover object-top"
                       />
@@ -385,7 +385,7 @@ export default function Index() {
               style={{ background: "var(--fido-dark)" }}>
               <div className="w-full sm:w-48 h-56 sm:h-auto flex-shrink-0 relative overflow-hidden">
                 <img
-                  src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/eba72679-9852-441c-928d-ec87de61bd4d.jpg"
+                  src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/bee4a406-483d-4813-a124-60421c2eeb6e.jpg"
                   alt="Илья Виги"
                   className="w-full h-full object-cover object-top"
                 />
