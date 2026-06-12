@@ -116,7 +116,7 @@ export default function Index() {
               src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/dafd1d89-eca8-4c2e-a810-f7545e8d6f8c.png"
               alt="FidoTube"
               className="h-12 w-auto object-contain hover:scale-105 transition-all"
-              style={{ filter: "drop-shadow(2px 2px 0px rgba(0,0,0,0.3))" }}
+              style={{ mixBlendMode: "multiply" }}
             />
           </div>
 
