@@ -71,7 +71,7 @@ export default function Index() {
   const [notifShown, setNotifShown] = useState(false);
   const [notifText, setNotifText] = useState("");
 
-  const TABS = ["Главная", "Шортсы", "Тренды", "Подписки", "Каналы"];
+  const TABS = ["Главная", "Шортсы", "Тренды", "Подписки", "Каналы", "ВИГИ"];
 
   const toggleLike = (id: number) => {
     setLikedVideos(prev =>
@@ -668,6 +668,182 @@ export default function Index() {
             </div>
           </div>
         )}
+
+        {/* ======== ВИГИ ======== */}
+        {activeTab === "ВИГИ" && (
+          <div>
+            {/* CHANNEL BANNER */}
+            <div className="rounded-3xl overflow-hidden mb-6 cartoon-border-thick">
+              <div className="h-36 relative flex items-center justify-center"
+                style={{ background: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)" }}>
+                <p className="font-bold text-center px-8 italic" style={{ color: "#a78bfa" }}>
+                  я не придумал какая будет шапка поэтому вот хех
+                </p>
+              </div>
+
+              {/* CHANNEL INFO */}
+              <div className="p-5 flex flex-col sm:flex-row gap-5 items-start" style={{ background: "#0f0f0f" }}>
+                <div className="w-24 h-24 rounded-full overflow-hidden cartoon-border-thick flex-shrink-0 -mt-12">
+                  <img
+                    src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/eba72679-9852-441c-928d-ec87de61bd4d.jpg"
+                    alt="ВИГИ"
+                    className="w-full h-full object-cover object-top"
+                    style={{ background: "#c4b5fd" }}
+                  />
+                </div>
+                <div className="flex-1">
+                  <h2 className="text-3xl font-black text-white mb-1" style={{ fontFamily: "'Oswald', sans-serif" }}>ВИГИ</h2>
+                  <p className="text-sm font-bold mb-2" style={{ color: "#aaa" }}>
+                    @onweeqee · 312 подписчиков · 24 видео
+                  </p>
+                  <p className="text-sm font-bold mb-3" style={{ color: "#ccc" }}>
+                    я виги а ты нет(
+                  </p>
+                  <div className="flex gap-2 flex-wrap">
+                    <a href="https://t.me/neweeqee" target="_blank" rel="noreferrer"
+                      className="px-4 py-2 rounded-xl cartoon-border-sm font-black text-sm hover:scale-105 transition-all"
+                      style={{ background: "#2563eb", color: "white" }}>
+                      ✈️ t.me/neweeqee
+                    </a>
+                    <a href="https://youtube.com/@onweeqee" target="_blank" rel="noreferrer"
+                      className="px-4 py-2 rounded-xl cartoon-border-sm font-black text-sm hover:scale-105 transition-all"
+                      style={{ background: "#FF0000", color: "white" }}>
+                      ▶ YouTube
+                    </a>
+                    <button
+                      onClick={() => toggleSub("ВИГИ")}
+                      className="px-5 py-2 rounded-xl cartoon-border font-black text-sm hover:scale-105 transition-all"
+                      style={{
+                        background: subscribedChannels.includes("ВИГИ") ? "#333" : "white",
+                        color: subscribedChannels.includes("ВИГИ") ? "#aaa" : "#0f0f0f",
+                      }}>
+                      {subscribedChannels.includes("ВИГИ") ? "✅ Подписан" : "🔔 Подписаться"}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* CHANNEL TABS */}
+              <div className="flex gap-1 px-5 pb-4 overflow-x-auto" style={{ background: "#0f0f0f", borderTop: "1px solid #333" }}>
+                {["Видео", "Shorts", "Плейлисты", "Записи"].map((t, i) => (
+                  <button key={t}
+                    className="px-5 py-2.5 font-black text-sm whitespace-nowrap transition-all"
+                    style={{
+                      color: i === 0 ? "white" : "#aaa",
+                      borderBottom: i === 0 ? "3px solid white" : "3px solid transparent",
+                    }}>
+                    {t}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* SORT TABS */}
+            <div className="flex gap-2 mb-5">
+              {["Новые", "Популярные", "Старые"].map((s, i) => (
+                <button key={s}
+                  className="px-4 py-2 rounded-full font-black text-sm cartoon-border-sm transition-all hover:scale-105"
+                  style={{
+                    background: i === 0 ? "white" : "transparent",
+                    color: i === 0 ? "var(--fido-dark)" : "var(--fido-dark)",
+                    border: "2px solid var(--fido-dark)",
+                  }}>
+                  {s}
+                </button>
+              ))}
+            </div>
+
+            {/* REAL VIDEOS FROM SCREENSHOT */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {[
+                {
+                  title: "Я Показал Свой Выдуманный Банк Илье Nowkie",
+                  views: "80 просмотров",
+                  time: "7 дней назад",
+                  duration: "5:35",
+                  img: "https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/d375b1f3-9a39-4d44-ad00-47d45ddb0bc2.png",
+                  imgPos: "0% 30%",
+                },
+                {
+                  title: "я Прорекламировал Выдуманный Банк",
+                  views: "1,9 тыс. просмотров",
+                  time: "1 месяц назад",
+                  duration: "5:19",
+                  img: "https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/d375b1f3-9a39-4d44-ad00-47d45ddb0bc2.png",
+                  imgPos: "50% 30%",
+                },
+                {
+                  title: "Я Внедрился В Видео Ильи Новки!",
+                  views: "2,6 тыс. просмотров",
+                  time: "1 месяц назад",
+                  duration: "6:37",
+                  img: "https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/d375b1f3-9a39-4d44-ad00-47d45ddb0bc2.png",
+                  imgPos: "100% 30%",
+                },
+                {
+                  title: "я виги и мне скучно (влог)",
+                  views: "412 просмотров",
+                  time: "2 месяца назад",
+                  duration: "3:14",
+                  img: IMAGES.frog,
+                  imgPos: "center",
+                },
+                {
+                  title: "РЕАКЦИЯ НА САМЫЕ СТРАННЫЕ ВИДЕО",
+                  views: "887 просмотров",
+                  time: "3 месяца назад",
+                  duration: "8:02",
+                  img: IMAGES.blob,
+                  imgPos: "center",
+                },
+                {
+                  title: "почему я не ютубер (серьёзно)",
+                  views: "1,1 тыс. просмотров",
+                  time: "4 месяца назад",
+                  duration: "4:55",
+                  img: IMAGES.cat,
+                  imgPos: "center",
+                },
+              ].map((v, i) => (
+                <div key={i}
+                  className="rounded-2xl overflow-hidden cursor-pointer hover:scale-[1.02] transition-all animate-pop-in"
+                  style={{ background: "#1a1a1a", animationDelay: `${i * 0.08}s`, opacity: 0 }}
+                  onClick={() => showNotif(`▶ «${v.title}» — смотри на YouTube @onweeqee!`)}
+                >
+                  <div className="relative">
+                    <div className="w-full h-44 overflow-hidden" style={{ background: "#333" }}>
+                      <img src={v.img} alt={v.title}
+                        className="w-full h-full object-cover"
+                        style={{ objectPosition: v.imgPos }}
+                      />
+                    </div>
+                    <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded text-xs font-black"
+                      style={{ background: "rgba(0,0,0,0.85)", color: "white" }}>
+                      {v.duration}
+                    </div>
+                  </div>
+                  <div className="p-3">
+                    <h3 className="font-black text-sm leading-tight mb-2 line-clamp-2" style={{ color: "white" }}>{v.title}</h3>
+                    <p className="text-xs font-bold" style={{ color: "#aaa" }}>ВИГИ · {v.views} · {v.time}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-8 rounded-3xl p-6 cartoon-border-thick text-center" style={{ background: "var(--fido-purple)", color: "white" }}>
+              <div className="text-4xl mb-3">👾</div>
+              <h3 className="text-xl font-black mb-2" style={{ fontFamily: "'Oswald', sans-serif" }}>ЭТО НАСТОЯЩИЙ КАНАЛ!</h3>
+              <p className="font-bold opacity-90 mb-4 text-sm">Подпишись на YouTube — там реальные видео про выдуманные банки и прочий хаос</p>
+              <a href="https://youtube.com/@onweeqee" target="_blank" rel="noreferrer"
+                className="inline-block px-8 py-3 rounded-2xl cartoon-border font-black hover:scale-105 transition-all"
+                style={{ background: "#FF0000", color: "white" }}>
+                ▶ ПЕРЕЙТИ НА YOUTUBE
+              </a>
+            </div>
+          </div>
+        )}
+
       </main>
 
       {/* ===== VIDEO MODAL ===== */}
