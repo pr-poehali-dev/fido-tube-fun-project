@@ -260,8 +260,8 @@ export default function Index() {
                     <div className="w-44 h-56 rounded-3xl overflow-hidden cartoon-border-thick rotate-2"
                       style={{ background: "white" }}>
                       <img
-                        src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/files/c44361cb-d2ca-41b8-9d99-2d780bdb6474.jpg"
-                        alt="Владелец FidoTube"
+                        src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/eba72679-9852-441c-928d-ec87de61bd4d.jpg"
+                        alt="Илья Виги"
                         className="w-full h-full object-cover object-top"
                       />
                     </div>
@@ -302,8 +302,8 @@ export default function Index() {
               style={{ background: "var(--fido-dark)" }}>
               <div className="w-full sm:w-48 h-56 sm:h-auto flex-shrink-0 relative overflow-hidden">
                 <img
-                  src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/files/c44361cb-d2ca-41b8-9d99-2d780bdb6474.jpg"
-                  alt="Основатель"
+                  src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/eba72679-9852-441c-928d-ec87de61bd4d.jpg"
+                  alt="Илья Виги"
                   className="w-full h-full object-cover object-top"
                 />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(to right, transparent 60%, var(--fido-dark))" }} />
@@ -314,10 +314,10 @@ export default function Index() {
                   👑 ВЛАДЕЛЕЦ И ГЕНЕРАЛЬНЫЙ ПЁС
                 </div>
                 <h3 className="text-3xl font-black mb-2 text-white" style={{ fontFamily: "'Oswald', sans-serif" }}>
-                  МАКС ФИДОЗАВР
+                  ИЛЬЯ ВИГИ
                 </h3>
                 <p className="font-bold mb-4" style={{ color: "rgba(255,255,255,0.7)" }}>
-                  Основал FidoTube в 2024 году после того, как сломал настоящий YouTube. Носит пиджак 24/7. Говорит что это «для солидности». Мы не спорим.
+                  Создал FidoTube после того, как лично сломал настоящий YouTube. Держит осколки как трофей. Говорит «так и задумано». Мы верим.
                 </p>
                 <div className="flex gap-3 flex-wrap">
                   {[
