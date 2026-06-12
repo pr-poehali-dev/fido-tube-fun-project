@@ -152,7 +152,7 @@ export default function Index() {
   const [notifShown, setNotifShown] = useState(false);
   const [notifText, setNotifText] = useState("");
 
-  const TABS = ["Главная", "Шортсы", "Тренды", "Подписки", "Каналы", "ВИГИ"];
+  const TABS = ["Главная", "Шортсы", "Тренды", "Подписки", "Каналы", "ВИГИ", "🏦 ИПФ Банк"];
 
   const toggleLike = (id: number) => {
     playSound(likedVideos.includes(id) ? "pop" : "like");
@@ -898,6 +898,183 @@ export default function Index() {
                 style={{ background: "#FF0000", color: "white" }}>
                 ▶ ПЕРЕЙТИ НА YOUTUBE
               </a>
+            </div>
+          </div>
+        )}
+
+        {/* ======== ИПФ БАНК ======== */}
+        {activeTab === "🏦 ИПФ Банк" && (
+          <div>
+            {/* HERO */}
+            <div className="rounded-3xl overflow-hidden mb-8 cartoon-border-thick relative"
+              style={{ background: "linear-gradient(135deg, #3b0764 0%, #5b21b6 50%, #1e1b4b 100%)", minHeight: 220 }}>
+              <div className="absolute inset-0 flex items-center justify-center opacity-5 text-[200px] select-none">🏦</div>
+              <div className="relative flex flex-col md:flex-row items-center gap-6 p-8">
+                <div className="flex-shrink-0">
+                  <div className="w-36 h-36 rounded-3xl overflow-hidden cartoon-border-thick bg-white flex items-center justify-center p-2 animate-float">
+                    <img
+                      src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/374f6083-e444-4ba5-987a-e54c16ad34b3.jpg"
+                      alt="ИПФ Банк"
+                      className="w-full h-full object-contain"
+                      style={{ mixBlendMode: "multiply" }}
+                    />
+                  </div>
+                </div>
+                <div className="flex-1 text-white">
+                  <div className="inline-block px-3 py-1 rounded-full text-xs font-black mb-3 cartoon-border-sm"
+                    style={{ background: "#7c3aed", color: "white", border: "2px solid white" }}>
+                    🎬 ИЗ ВСЕЛЕННОЙ ФИНЕС И ФЕРБ
+                  </div>
+                  <h1 className="text-4xl md:text-6xl font-black mb-3 leading-tight"
+                    style={{ fontFamily: "'Oswald', sans-serif", textShadow: "3px 3px 0 rgba(0,0,0,0.4)" }}>
+                    ИПФ БАНК
+                  </h1>
+                  <p className="text-lg font-bold opacity-90 mb-2">
+                    Лучше чем ФПИ. Официально. Мы сами так написали на плакате.
+                  </p>
+                  <p className="text-sm font-bold opacity-60">Слоган: «Храни деньги там, где их точно никто не найдёт»</p>
+                </div>
+              </div>
+            </div>
+
+            {/* STATS */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+              {[
+                { label: "Клиентов", value: "3", emoji: "👤", bg: "#7c3aed" },
+                { label: "Надёжность", value: "±∞%", emoji: "📊", bg: "#5b21b6" },
+                { label: "Отделений", value: "0.5", emoji: "🏢", bg: "#4c1d95" },
+                { label: "Доверие", value: "безусловно", emoji: "🤝", bg: "#3b0764" },
+              ].map((s, i) => (
+                <div key={i} className="cartoon-border rounded-2xl p-4 text-center animate-pop-in"
+                  style={{ background: s.bg, color: "white", animationDelay: `${i * 0.1}s`, opacity: 0 }}>
+                  <div className="text-3xl mb-1">{s.emoji}</div>
+                  <div className="text-xl font-black" style={{ fontFamily: "'Oswald', sans-serif" }}>{s.value}</div>
+                  <div className="text-xs font-bold opacity-80">{s.label}</div>
+                </div>
+              ))}
+            </div>
+
+            {/* ВИДЕО С БАНКОМ */}
+            <h2 className="text-2xl font-black mb-4" style={{ fontFamily: "'Oswald', sans-serif", color: "var(--fido-dark)" }}>
+              📺 РЕКЛАМА И ВИДЕО
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+              {[
+                {
+                  title: "Я Показал Свой Выдуманный Банк Илье Nowkie",
+                  views: "80 просмотров",
+                  time: "7 дней назад",
+                  duration: "5:35",
+                  img: "https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/9dc6ae08-fb49-47bd-b1ec-626ce483149f.jpg",
+                  tag: "🏦 БАНК В ДЕЛЕ",
+                },
+                {
+                  title: "я Прорекламировал Выдуманный Банк",
+                  views: "1,9 тыс. просмотров",
+                  time: "1 месяц назад",
+                  duration: "5:19",
+                  img: "https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/4c5cb82c-e028-479a-a247-a3f0238b7dec.jpg",
+                  tag: "📢 РЕКЛАМА",
+                },
+                {
+                  title: "ИПФ БАНК: Открыть счёт за 5 секунд (туториал)",
+                  views: "999 тыс. просмотров",
+                  time: "только что",
+                  duration: "0:05",
+                  img: "https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/374f6083-e444-4ba5-987a-e54c16ad34b3.jpg",
+                  tag: "⚡ ТУТОРИАЛ",
+                },
+              ].map((v, i) => (
+                <div key={i}
+                  className="cartoon-border rounded-2xl overflow-hidden cursor-pointer hover:scale-[1.02] transition-all bg-white animate-slide-up"
+                  style={{ animationDelay: `${i * 0.1}s`, opacity: 0 }}
+                  onClick={() => showNotif("🏦 ИПФ Банк одобрил ваш просмотр!", "boing")}
+                >
+                  <div className="relative">
+                    <img src={v.img} alt={v.title} className="w-full h-44 object-cover" />
+                    <div className="absolute bottom-2 right-2 px-2 py-0.5 rounded-lg text-xs font-black cartoon-border-sm"
+                      style={{ background: "rgba(0,0,0,0.85)", color: "white" }}>{v.duration}</div>
+                    <div className="absolute top-2 left-2 px-2 py-0.5 rounded-lg text-xs font-black cartoon-border-sm"
+                      style={{ background: "#7c3aed", color: "white" }}>{v.tag}</div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="font-black text-sm leading-tight mb-2 line-clamp-2" style={{ color: "var(--fido-dark)" }}>{v.title}</h3>
+                    <div className="font-bold text-xs" style={{ color: "#7c3aed" }}>ИПФ Банк Официально · {v.views} · {v.time}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* УСЛУГИ */}
+            <h2 className="text-2xl font-black mb-4" style={{ fontFamily: "'Oswald', sans-serif", color: "var(--fido-dark)" }}>
+              💳 НАШИ УСЛУГИ
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              {[
+                { icon: "💳", title: "Карта ИПФ", desc: "Работает везде, где принимают воображаемые деньги. Кэшбэк — 100% фантазий.", btn: "Оформить" },
+                { icon: "🏧", title: "ИПФ Вклад", desc: "Положи деньги и забудь. Мы тоже забудем где они. Ставка: ±∞%.", btn: "Открыть вклад" },
+                { icon: "📱", title: "ИПФ Приложение", desc: "Скачать нельзя. Но если бы можно — было бы очень красиво.", btn: "Скачать (нет)" },
+                { icon: "🤝", title: "ИПФ Ипотека", desc: "Купи квартиру которой нет в городе которого нет. Одобрение за 3 секунды.", btn: "Одобрят!" },
+              ].map((s, i) => (
+                <div key={i} className="cartoon-border rounded-2xl p-5 bg-white flex gap-4 items-start hover:scale-[1.01] transition-all">
+                  <div className="w-12 h-12 rounded-xl cartoon-border flex items-center justify-center text-2xl flex-shrink-0"
+                    style={{ background: "#ede9fe" }}>{s.icon}</div>
+                  <div className="flex-1">
+                    <h3 className="font-black text-base mb-1" style={{ color: "var(--fido-dark)" }}>{s.title}</h3>
+                    <p className="text-xs font-bold text-gray-500 mb-3">{s.desc}</p>
+                    <button
+                      className="px-4 py-1.5 rounded-xl cartoon-border-sm font-black text-xs hover:scale-105 transition-all"
+                      style={{ background: "#7c3aed", color: "white" }}
+                      onClick={() => showNotif(`✅ ИПФ Банк одобрил «${s.title}»! Поздравляем!`, "subscribe")}
+                    >{s.btn}</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* ОТЗЫВЫ */}
+            <h2 className="text-2xl font-black mb-4" style={{ fontFamily: "'Oswald', sans-serif", color: "var(--fido-dark)" }}>
+              ⭐ ОТЗЫВЫ КЛИЕНТОВ
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+              {[
+                { name: "Финес Флетчер", text: "Я знаю что вы этим займётесь сегодня! ИПФ Банк — лучший способ вложить деньги в схему дня.", stars: 5, emoji: "👦" },
+                { name: "Ферб Флетчер", text: ".", stars: 5, emoji: "🧑‍🦰" },
+                { name: "Перри Утконос", text: "...", stars: 1, emoji: "🦆" },
+              ].map((r, i) => (
+                <div key={i} className="cartoon-border rounded-2xl p-4 bg-white">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-10 h-10 rounded-full cartoon-border flex items-center justify-center text-xl"
+                      style={{ background: "#ede9fe" }}>{r.emoji}</div>
+                    <div>
+                      <div className="font-black text-sm" style={{ color: "var(--fido-dark)" }}>{r.name}</div>
+                      <div className="text-yellow-400 text-sm">{"⭐".repeat(r.stars)}</div>
+                    </div>
+                  </div>
+                  <p className="text-sm font-bold text-gray-600 italic">«{r.text}»</p>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="rounded-3xl p-8 cartoon-border-thick text-center" style={{ background: "#3b0764", color: "white" }}>
+              <img
+                src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/374f6083-e444-4ba5-987a-e54c16ad34b3.jpg"
+                alt="ИПФ Банк"
+                className="w-24 h-24 object-contain mx-auto mb-4 animate-float"
+                style={{ mixBlendMode: "screen" }}
+              />
+              <h3 className="text-2xl font-black mb-2" style={{ fontFamily: "'Oswald', sans-serif" }}>
+                СТАНЬ КЛИЕНТОМ ИПФ БАНКА!
+              </h3>
+              <p className="font-bold opacity-80 mb-4">Лучше чем ФПИ. Это факт. Спроси у Ильи Виги.</p>
+              <button
+                className="px-8 py-3 rounded-2xl cartoon-border font-black hover:scale-105 transition-all"
+                style={{ background: "#7c3aed", color: "white" }}
+                onClick={() => showNotif("🏦 Добро пожаловать в ИПФ Банк! Ваш счёт: 0 руб.", "subscribe")}
+              >
+                🏦 ОТКРЫТЬ СЧЁТ
+              </button>
             </div>
           </div>
         )}
