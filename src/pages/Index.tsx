@@ -152,7 +152,7 @@ export default function Index() {
   const [notifShown, setNotifShown] = useState(false);
   const [notifText, setNotifText] = useState("");
 
-  const TABS = ["Главная", "Шортсы", "Тренды", "Подписки", "Каналы", "ВИГИ", "🏦 ИПФ Банк"];
+  const TABS = ["Главная", "Шортсы", "Тренды", "Подписки", "Каналы", "ВИГИ", "🏦 ИПФ Банк", "🏆 Топ Фидотюберов"];
 
   const toggleLike = (id: number) => {
     playSound(likedVideos.includes(id) ? "pop" : "like");
@@ -1074,6 +1074,118 @@ export default function Index() {
                 onClick={() => showNotif("🏦 Добро пожаловать в ИПФ Банк! Ваш счёт: 0 руб.", "subscribe")}
               >
                 🏦 ОТКРЫТЬ СЧЁТ
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* ======== ТОП ФИДОТЮБЕРОВ ======== */}
+        {activeTab === "🏆 Топ Фидотюберов" && (
+          <div>
+            {/* HEADER */}
+            <div className="rounded-3xl overflow-hidden mb-8 cartoon-border-thick relative"
+              style={{ background: "linear-gradient(135deg, #FF6B00 0%, #FFE033 50%, #FF4FA3 100%)" }}>
+              <div className="p-8 text-center">
+                <div className="text-6xl mb-3 animate-float">🏆</div>
+                <h1 className="text-4xl md:text-6xl font-black mb-2 text-white"
+                  style={{ fontFamily: "'Oswald', sans-serif", textShadow: "3px 3px 0 rgba(0,0,0,0.3)" }}>
+                  ТОП ФИДОТЮБЕРОВ
+                </h1>
+                <p className="font-bold text-white opacity-90">Легенды платформы. Герои нашего времени. Просто хорошие ребята.</p>
+              </div>
+              <div className="absolute top-4 left-8 text-3xl animate-spin-slow opacity-30">⭐</div>
+              <div className="absolute bottom-4 right-8 text-3xl animate-float opacity-30" style={{ animationDelay: "1s" }}>✨</div>
+            </div>
+
+            {/* LEADERBOARD */}
+            <div className="space-y-4 max-w-2xl mx-auto">
+
+              {/* #1 — ОСНОВАТЕЛЬ */}
+              <div className="cartoon-border-thick rounded-3xl overflow-hidden animate-pop-in"
+                style={{ background: "linear-gradient(135deg, #FFE033, #FF6B00)", animationDelay: "0s", opacity: 0 }}>
+                <div className="flex items-center gap-5 p-5">
+                  <div className="flex-shrink-0 text-center">
+                    <div className="text-5xl font-black leading-none" style={{ fontFamily: "'Oswald', sans-serif", color: "var(--fido-dark)", textShadow: "2px 2px 0 rgba(0,0,0,0.2)" }}>
+                      #1
+                    </div>
+                    <div className="text-2xl">👑</div>
+                  </div>
+                  <div className="w-20 h-20 rounded-2xl overflow-hidden cartoon-border-thick flex-shrink-0">
+                    <img
+                      src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/bee4a406-483d-4813-a124-60421c2eeb6e.jpg"
+                      alt="Илья Виги"
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap mb-1">
+                      <span className="font-black text-xl" style={{ fontFamily: "'Oswald', sans-serif", color: "var(--fido-dark)" }}>ИЛЬЯ ВИГИ</span>
+                      <span className="px-2 py-0.5 rounded-full text-xs font-black cartoon-border-sm"
+                        style={{ background: "var(--fido-dark)", color: "var(--fido-yellow)" }}>ОСНОВАТЕЛЬ</span>
+                      <span className="text-sm">✅</span>
+                    </div>
+                    <p className="text-sm font-bold opacity-80" style={{ color: "var(--fido-dark)" }}>
+                      @onweeqee · Создал FidoTube. Сломал YouTube. Носит пиджак.
+                    </p>
+                    <div className="flex gap-3 mt-2 flex-wrap">
+                      <span className="text-xs font-black px-2 py-1 rounded-lg" style={{ background: "rgba(0,0,0,0.15)", color: "var(--fido-dark)" }}>🎬 24 видео</span>
+                      <span className="text-xs font-black px-2 py-1 rounded-lg" style={{ background: "rgba(0,0,0,0.15)", color: "var(--fido-dark)" }}>👥 312 подписчиков</span>
+                      <span className="text-xs font-black px-2 py-1 rounded-lg" style={{ background: "rgba(0,0,0,0.15)", color: "var(--fido-dark)" }}>🏦 Основал банк</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* #2–#5 — СВОБОДНЫЕ МЕСТА */}
+              {[2, 3, 4, 5].map((pos, i) => (
+                <div
+                  key={pos}
+                  className="cartoon-border rounded-3xl overflow-hidden animate-pop-in cursor-pointer hover:scale-[1.01] transition-all"
+                  style={{ background: "white", animationDelay: `${(i + 1) * 0.1}s`, opacity: 0 }}
+                  onClick={() => showNotif(`🏆 Место #${pos} ещё свободно! Может это ты?`, "boing")}
+                >
+                  <div className="flex items-center gap-5 p-5">
+                    <div className="flex-shrink-0 text-center w-12">
+                      <div className="text-3xl font-black leading-none" style={{ fontFamily: "'Oswald', sans-serif", color: "#ccc" }}>
+                        #{pos}
+                      </div>
+                      <div className="text-xl">{["🥈", "🥉", "🎖️", "🎖️"][i]}</div>
+                    </div>
+                    <div className="w-20 h-20 rounded-2xl cartoon-border flex-shrink-0 flex items-center justify-center"
+                      style={{ background: "#f5f5f5", border: "3px dashed #ddd", boxShadow: "none" }}>
+                      <span className="text-3xl">❓</span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="h-5 rounded-lg mb-2 w-40" style={{ background: "#eee" }} />
+                      <div className="h-3 rounded-lg mb-3 w-56" style={{ background: "#f0f0f0" }} />
+                      <div className="inline-block px-4 py-1.5 rounded-xl cartoon-border-sm font-black text-xs transition-all hover:scale-105"
+                        style={{ background: "var(--fido-orange)", color: "white" }}>
+                        🚀 ЗАНЯТЬ МЕСТО
+                      </div>
+                    </div>
+                    <div className="hidden sm:block text-right flex-shrink-0">
+                      <div className="font-black text-2xl" style={{ color: "#ddd", fontFamily: "'Oswald', sans-serif" }}>???</div>
+                      <div className="text-xs text-gray-300 font-bold">подписчиков</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="mt-8 rounded-3xl p-8 cartoon-border-thick text-center max-w-2xl mx-auto"
+              style={{ background: "var(--fido-dark)", color: "white" }}>
+              <div className="text-5xl mb-3 animate-float">🎬</div>
+              <h3 className="text-2xl font-black mb-2" style={{ fontFamily: "'Oswald', sans-serif" }}>
+                ХОЧЕШЬ СЮДА ПОПАСТЬ?
+              </h3>
+              <p className="font-bold opacity-70 mb-4">Стань Фидотюбером. Сними видео. Прославься на весь FidoTube (и его 3 зрителей).</p>
+              <button
+                className="px-8 py-3 rounded-2xl cartoon-border font-black hover:scale-105 transition-all"
+                style={{ background: "var(--fido-yellow)", color: "var(--fido-dark)" }}
+                onClick={() => showNotif("🎬 Заявка принята! Ждём твоё первое видео.", "subscribe")}
+              >
+                🏆 ПОДАТЬ ЗАЯВКУ
               </button>
             </div>
           </div>
