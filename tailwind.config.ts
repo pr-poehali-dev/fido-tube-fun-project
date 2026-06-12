@@ -7,6 +7,7 @@ export default {
 		"./components/**/*.{ts,tsx}",
 		"./app/**/*.{ts,tsx}",
 		"./src/**/*.{ts,tsx}",
+			"./1781264092385926397.html"
 	],
 	prefix: "",
 	theme: {
@@ -88,7 +89,22 @@ export default {
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'wiggle': 'wiggle 0.5s ease-in-out infinite',
+				'float': 'float 3s ease-in-out infinite',
+				'spin-slow': 'spin-slow 8s linear infinite',
+				'marquee': 'marquee 20s linear infinite',
+				'pop-in': 'pop-in 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards',
+				'slide-up': 'slide-up 0.5s ease-out forwards',
+			},
+			keyframes: {
+				...{},
+				'wiggle': { '0%, 100%': { transform: 'rotate(-2deg)' }, '50%': { transform: 'rotate(2deg)' } },
+				'float': { '0%, 100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-8px)' } },
+				'spin-slow': { 'from': { transform: 'rotate(0deg)' }, 'to': { transform: 'rotate(360deg)' } },
+				'marquee': { '0%': { transform: 'translateX(0%)' }, '100%': { transform: 'translateX(-50%)' } },
+				'pop-in': { '0%': { opacity: '0', transform: 'scale(0.3) rotate(-10deg)' }, '70%': { transform: 'scale(1.1) rotate(2deg)' }, '100%': { opacity: '1', transform: 'scale(1) rotate(0deg)' } },
+				'slide-up': { 'from': { opacity: '0', transform: 'translateY(40px)' }, 'to': { opacity: '1', transform: 'translateY(0)' } },
 			}
 		}
 	},
