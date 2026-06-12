@@ -255,9 +255,21 @@ export default function Index() {
                     </button>
                   </div>
                 </div>
-                <div className="animate-float">
-                  <div className="w-48 h-48 rounded-3xl overflow-hidden cartoon-border-thick rotate-3">
-                    <img src={IMAGES.dog} alt="hero" className="w-full h-full object-cover" />
+                <div className="animate-float flex-shrink-0">
+                  <div className="relative">
+                    <div className="w-44 h-56 rounded-3xl overflow-hidden cartoon-border-thick rotate-2"
+                      style={{ background: "white" }}>
+                      <img
+                        src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/files/c44361cb-d2ca-41b8-9d99-2d780bdb6474.jpg"
+                        alt="Владелец FidoTube"
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                    <div className="absolute -bottom-3 -left-3 px-3 py-1.5 rounded-xl cartoon-border font-black text-xs -rotate-2 whitespace-nowrap"
+                      style={{ background: "var(--fido-yellow)", color: "var(--fido-dark)" }}>
+                      👑 ОСНОВАТЕЛЬ
+                    </div>
+                    <div className="absolute -top-3 -right-3 text-2xl animate-wiggle">💼</div>
                   </div>
                 </div>
               </div>
@@ -283,6 +295,44 @@ export default function Index() {
                   <div className="text-xs font-bold opacity-80">{stat.label}</div>
                 </div>
               ))}
+            </div>
+
+            {/* OWNER CARD */}
+            <div className="cartoon-border-thick rounded-3xl overflow-hidden mb-8 flex flex-col sm:flex-row"
+              style={{ background: "var(--fido-dark)" }}>
+              <div className="w-full sm:w-48 h-56 sm:h-auto flex-shrink-0 relative overflow-hidden">
+                <img
+                  src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/files/c44361cb-d2ca-41b8-9d99-2d780bdb6474.jpg"
+                  alt="Основатель"
+                  className="w-full h-full object-cover object-top"
+                />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to right, transparent 60%, var(--fido-dark))" }} />
+              </div>
+              <div className="flex-1 p-6 flex flex-col justify-center">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-black mb-3 self-start cartoon-border-sm"
+                  style={{ background: "var(--fido-yellow)", color: "var(--fido-dark)" }}>
+                  👑 ВЛАДЕЛЕЦ И ГЕНЕРАЛЬНЫЙ ПЁС
+                </div>
+                <h3 className="text-3xl font-black mb-2 text-white" style={{ fontFamily: "'Oswald', sans-serif" }}>
+                  МАКС ФИДОЗАВР
+                </h3>
+                <p className="font-bold mb-4" style={{ color: "rgba(255,255,255,0.7)" }}>
+                  Основал FidoTube в 2024 году после того, как сломал настоящий YouTube. Носит пиджак 24/7. Говорит что это «для солидности». Мы не спорим.
+                </p>
+                <div className="flex gap-3 flex-wrap">
+                  {[
+                    { label: "Видео снял", val: "0" },
+                    { label: "Денег потратил", val: "∞" },
+                    { label: "Сожалений", val: "нет" },
+                  ].map((s, i) => (
+                    <div key={i} className="px-4 py-2 rounded-xl cartoon-border-sm text-center"
+                      style={{ background: ["var(--fido-orange)", "var(--fido-purple)", "var(--fido-green)"][i] }}>
+                      <div className="font-black text-white text-lg" style={{ fontFamily: "'Oswald', sans-serif" }}>{s.val}</div>
+                      <div className="text-xs font-bold text-white opacity-80">{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* CATEGORIES */}
