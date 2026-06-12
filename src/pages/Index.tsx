@@ -111,15 +111,13 @@ export default function Index() {
         <div className="flex items-center gap-3 px-4 py-3 max-w-screen-2xl mx-auto">
 
           {/* LOGO */}
-          <div className="flex items-center gap-2 select-none cursor-pointer" onClick={() => setActiveTab("Главная")}>
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl font-black cartoon-border"
-              style={{ background: "var(--fido-yellow)" }}>
-              🐕
-            </div>
-            <span className="text-2xl font-black tracking-tight hidden sm:block"
-              style={{ fontFamily: "'Oswald', sans-serif", color: "white", textShadow: "2px 2px 0 var(--fido-dark)" }}>
-              Fido<span style={{ color: "var(--fido-yellow)" }}>Tube</span>
-            </span>
+          <div className="flex items-center select-none cursor-pointer flex-shrink-0" onClick={() => setActiveTab("Главная")}>
+            <img
+              src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/dafd1d89-eca8-4c2e-a810-f7545e8d6f8c.png"
+              alt="FidoTube"
+              className="h-12 w-auto object-contain hover:scale-105 transition-all"
+              style={{ filter: "drop-shadow(2px 2px 0px rgba(0,0,0,0.3))" }}
+            />
           </div>
 
           {/* SEARCH */}
@@ -771,9 +769,12 @@ export default function Index() {
         <div className="max-w-screen-2xl mx-auto px-4 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
             <div>
-              <div className="text-2xl font-black mb-3" style={{ fontFamily: "'Oswald', sans-serif", color: "var(--fido-yellow)" }}>
-                🐕 FidoTube
-              </div>
+              <img
+                src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/dafd1d89-eca8-4c2e-a810-f7545e8d6f8c.png"
+                alt="FidoTube"
+                className="h-14 w-auto object-contain mb-2"
+                style={{ filter: "brightness(0) invert(1) drop-shadow(1px 1px 0 rgba(255,220,50,0.5))" }}
+              />
               <p className="text-sm opacity-70 font-bold">Лучший видеохостинг для собак и всех остальных тоже.</p>
             </div>
             {[
