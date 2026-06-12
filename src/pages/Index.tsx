@@ -115,8 +115,7 @@ export default function Index() {
             <img
               src="https://cdn.poehali.dev/projects/ecf6af65-b161-4037-abda-c2a2eb32f3ea/bucket/dafd1d89-eca8-4c2e-a810-f7545e8d6f8c.png"
               alt="FidoTube"
-              className="h-12 w-auto object-contain hover:scale-105 transition-all"
-              style={{ mixBlendMode: "multiply" }}
+              className="h-20 w-auto object-contain hover:scale-105 transition-all"
             />
           </div>
 
